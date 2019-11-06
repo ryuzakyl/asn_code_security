@@ -16,6 +16,10 @@ Testing security measures in Django
 3. docker-compose up -d
 4. Open browser at [http://localhost:8000](http://localhost:8000)
 
+## Live demo
+* [Docker image in Hub](https://hub.docker.com/r/ryuzakyl/asn_code_security)
+* [GCE Live demo](http://35.192.94.0:8000)
+
 ## References
 1. Docker docs for Django and Compose. [Quickstart: Compose and Django](https://docs.docker.com/compose/django/)
 2. StackOverflow [post](https://stackoverflow.com/questions/14647723/django-forms-if-not-valid-show-form-with-error-message)
