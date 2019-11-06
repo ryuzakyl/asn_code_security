@@ -18,8 +18,8 @@ Testing security measures in Django
 
 ## References
 1. Docker docs for Django and Compose. [Quickstart: Compose and Django](https://docs.docker.com/compose/django/)
-2. StackOverflow [Post](https://stackoverflow.com/questions/14647723/django-forms-if-not-valid-show-form-with-error-message)
+2. StackOverflow [post](https://stackoverflow.com/questions/14647723/django-forms-if-not-valid-show-form-with-error-message)
 regarding custom field validation in forms.
-3. StackOverflow [Post](https://stackoverflow.com/questions/3289860/how-can-i-embed-django-csrf-token-straight-into-html)
+3. StackOverflow [post](https://stackoverflow.com/questions/3289860/how-can-i-embed-django-csrf-token-straight-into-html)
 regarding CSRF token usage in Django view.
 4. Django [docs](https://docs.djangoproject.com/en/2.2/ref/templates/language/#automatic-html-escaping) regarding *Cross Site Scripting (XSS)* protection.
