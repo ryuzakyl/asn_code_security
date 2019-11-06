@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('example1', views.example1, name='example1'),
+    path('csrf-protection', views.csrf_protection, name='csrf_protection'),
 ]

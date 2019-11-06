@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CSRF Protection
+{% endblock %}
+
+{% block content %}
+    <h1>Testing CSRF protection in Django</h1>
+
+    {% if form_data %}
+        {# in case it was a POST request #}
+        <span>Disclaimer: Data isn't cleaned/validated in this example</span>
+        <hr />
+        <p><b>Name: </b>{{ form_data.name }}</p>
+        <p><b>Last Name: </b>{{ form_data.last_name }}</p>
+        <hr />
+        <a href={% url 'csrf_protection' %}>&larr; Back to example</a>
+    {% else %}
+        {# in case it was a GET request #}
+        <b>CSRF Token: </b><p>{{ csrf_token }}</p>
+        <hr />
+        <form action={% url 'csrf_protection' %} method="POST">
+            {% csrf_token %}
+            <label for="name">Name: </label>
+            <input type="text" name="name" placeholder="Enter Name" />
+            <br />
+            <br />
+            <label for="last_name">Last Name: </label>
+            <input type="text" name="last_name" placeholder="Enter Last Name" />
+            <br />
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+{% endblock %}
