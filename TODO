@@ -1,0 +1,18 @@
+check for open ports in instance:
+netstat -vatn
+
+create firewall rule for GCE instance:
+gcloud auth login
+gcloud compute firewall-rules create enable-port-8000-bash --allow tcp:8000 --source-tags=asn-instance-0 --source-ranges=0.0.0.0/0
+https://stackoverflow.com/questions/21065922/how-to-open-a-specific-port-such-as-9090-in-google-compute-engine
+
+enable requests from everywhere:
+ALLOWED_HOSTS = ['*']
+
+django migrations when using docker:
+https://stackoverflow.com/questions/33992867/how-do-you-perform-django-database-migrations-when-using-docker-compose
+https://stackoverflow.com/questions/1624782/django-model-fields-validation
+
+publish docker image to Docker Hub:
+https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
+https://hackernoon.com/publish-your-docker-image-to-docker-hub-10b826793faf
