@@ -19,7 +19,7 @@
         {# in case it was a GET request #}
         <b>CSRF Token: </b><p>{{ csrf_token }}</p>
         <hr />
-        <form action={% url 'csrf_protection' %} method="POST">
+        <form method="POST" action={% url 'csrf_protection' %}>
             {% csrf_token %}
             <label for="name">Name: </label>
             <input type="text" name="name" placeholder="Enter Name" />

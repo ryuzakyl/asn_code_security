@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Form validation
+{% endblock %}
+
+{% block extrastyles %}
+    {# extra styles for form errors #}
+
+    <style type="text/css">
+        .alert-danger {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Testing Django Form validation usage</h1>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% else %}
+        <form method="POST" action={% url 'form_validation' %}>
+            {% csrf_token %}
+            <label for="renewal_date">Renewal date: </label>
+            <input type="date" name="renewal_date" id="renewal_date"/>
+            <br />
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+    <hr />
+    {% if form.errors %}
+        <a href={% url 'form_validation' %}>&larr; Back to Form validation</a>
+    {% else %}
+        <a href={% url 'home' %}>&larr; Back to Home</a>
+    {% endif %}
+{% endblock %}

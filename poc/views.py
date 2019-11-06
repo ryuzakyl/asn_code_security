@@ -1,7 +1,22 @@
 from django.shortcuts import render
 from django.middleware import csrf
 
-from .forms import CsrfForm, XssForm
+from .forms import CsrfForm, XssForm, RenewBookForm
+
+
+def form_validation(request):
+    # get form instance
+    form = RenewBookForm(request.POST or None, request.FILES or None)
+
+    # set context for templates
+    context = {'form': form}
+
+    # handle POST request
+    if request.method == 'POST':
+        if form.is_valid():
+            return render(request, 'poc/form_posted.html', context)
+
+    return render(request, 'poc/form_validation.html', context)
 
 
 def csrf_protection(request):

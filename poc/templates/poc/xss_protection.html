@@ -31,10 +31,10 @@
         {# in case it was a GET request #}
         <span>Different treatments for the same malicious data</span>
         <hr />
-        <form action={% url 'xss_protection' %} method="POST">
+        <form method="POST" action={% url 'xss_protection' %}>
             {% csrf_token %}
             <label for="malicious_data">Malicious data: </label>
-            <input type="text" name="malicious_data" value="{{ malicious_data }}" style="width: 400px" />
+            <input type="text" name="malicious_data" id="malicious_data" value="{{ malicious_data }}" style="width: 400px" />
             <br />
             <br />
             <button type="submit">Submit</button>

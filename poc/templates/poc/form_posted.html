@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Form posted
+{% endblock %}
+
+{% block extrastyles %}
+    {# extra styles for form errors #}
+
+    <style type="text/css">
+        .alert-success {
+            color: green;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Testing Django Form validation usage</h1>
+
+    <div class="alert alert-success">
+        <strong>Form data validated successfully</strong>
+    </div>
+
+    <p><b>Renewal date: </b> {{ form.data.renewal_date }}</p>
+
+    <hr />
+    <a href={% url 'form_validation' %}>&larr; Back to Form validation</a>
+{% endblock %}
