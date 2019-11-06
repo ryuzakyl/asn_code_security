@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    XSS Protection
+{% endblock %}
+
+{% block content %}
+    <h1>Testing XSS protection in Django</h1>
+
+    {% if form_data %}
+        {# in case it was a POST request #}
+        <span>Information: Showing different template-based approaches for data treatment</span>
+        <hr />
+        <p><b>Default: </b>This data will be escaped by Django</p>
+        {{ form_data.malicious_data }}
+        <p>--------------------</p>
+        <p><b>Unescaped: </b>This data will NOT be escaped by user request. Browser might block execution (see below).</p>
+        {{ form_data.malicious_data | safe }}
+        <img src="{% static 'poc/img/console-xss-warning.png' %}" />
+        <p>--------------------</p>
+
+        <p><b>Autoescape off: </b>This data will NOT be escaped by user request. Browser might block execution (see below).</p>
+        {% autoescape off %}
+            {{ form_data.malicious_data }}
+        {% endautoescape %}
+        <img src="{% static 'poc/img/console-xss-warning.png' %}" />
+        <hr />
+        <a href={% url 'xss_protection' %}>&larr; Back to example</a>
+    {% else %}
+        {# in case it was a GET request #}
+        <span>Different treatments for the same malicious data</span>
+        <hr />
+        <form action={% url 'xss_protection' %} method="POST">
+            {% csrf_token %}
+            <label for="malicious_data">Malicious data: </label>
+            <input type="text" name="malicious_data" value="{{ malicious_data }}" style="width: 400px" />
+            <br />
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+{% endblock %}

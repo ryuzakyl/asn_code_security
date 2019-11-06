@@ -5,5 +5,29 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Hello World from template!!!</h1>
+    <h1>Testing Python web-based development stack</h1>
+    <br />
+    <b>Authors: </b>
+        Victor M. Mendiola Lau &lt;<a href="mailto:ryuzakyl@gmail.com">ryuzakyl@gmail.com</a>&gt;,
+        Madelin Díaz Ramos &lt;<a href="mailto:madelinkind@gmail.com">madelinkind@gmail.com</a>&gt;
+    <br />
+    <br />
+    <b>Stack details:</b>
+    <ul>
+        <li>Python 3.6.x</li>
+        <li>Django 2.2.7</li>
+        <li>SQLite 3</li>
+    </ul>
+    <b>Examples:</b>
+    <ol>
+        <li>
+            <a href={% url 'home' %}>Home</a>
+        </li>
+        <li>
+            <a href={% url 'csrf_protection' %}>CSRF protection</a>
+        </li>
+        <li>
+            <a href={% url 'xss_protection' %}>XSS protection</a>
+        </li>
+    </ol>
 {% endblock %}
